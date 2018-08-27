@@ -9,5 +9,5 @@ client.setEncoding('utf8');
 process.stdin.pipe(client);
 client.on('data', data => {
     console.log(data)
-})
+});
 
