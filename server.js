@@ -54,7 +54,7 @@ const server = net.createServer((client) => {
 
             client.write(client.name + ' has joined the chatroom\n');
             console.log(messageThread);
-            fs.appendFile('.chatLog.txt', `${client.name}: has joined the chat room`, function () {
+            fs.appendFile('./chatLog.txt', `${client.name}: has joined the chat room`, function () {
 
                 // if (err) throw err;
             });
@@ -66,13 +66,14 @@ const server = net.createServer((client) => {
                 user.write(`Guest${client.name}: ${data}`);
                 messageThread.push(client.name + data);
                 console.log(messageThread);
-                fs.appeadFile(`'./chatLog.txt ' + ${client.name}`, data, function () {
-                    if (err) throw err;
+                fs.appendFile('./chatLog.txt', `${client.name}: adding message thread`, function () {
+                    console.log('yourface');
                 });
-            } else {
-                fs.appendFile(`'./chatLog.txt ' ${client.name}`, data, function () {
+            }
+            else {
+                fs.appendFile('./chatLog.txt', `${client.name}`, function () {
                     // if (err) throw err;
-                    console.log('your face');
+                    console.log('your face 2');
                 });
             }
         });
@@ -101,11 +102,10 @@ function broadcast(message, sender) {
         // Don't want to send it to sender
         if (client === sender) return;
         client.write(message);
-        console.log('message printing:'+ message);
+        console.log('console log message printing:'+ message);
     });
     // Log it to the server output too
     process.stdout.write(messageThreadFromClients);
-    console.log("hopefully array of messages" + messageThreadFromClients);
 }
 
 server.listen(5000, () => {
