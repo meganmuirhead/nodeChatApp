@@ -2,7 +2,7 @@ const net = require('net');
 
 
 let client = net.createConnection({port:5000}, () => {
-    console.log("I'm connected");
+    console.log("Client is now connected");
 });
 
 client.setEncoding('utf8');

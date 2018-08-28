@@ -11,7 +11,7 @@ const server = net.createServer((client) => {
     client.setEncoding('utf8');
 
     //adding new client to client array
-    clientNumber = clientArray.push(client);
+    let clientNumber = clientArray.push(client);
     // name for client
     client.name = client.remotePort;
 
@@ -94,6 +94,7 @@ server.on('error', (err) => {
 
 function broadcast(message, sender) {
     let messageThreadFromClients = messageThread.push(message);
+
     clientArray.forEach(client => {
         // Don't want to send it to sender
         if (client === sender) return;
@@ -101,7 +102,9 @@ function broadcast(message, sender) {
         // console.log('console log message printing:'+ message);
     });
     // Log it to the server output too
+    // process.stdout.write(messageThreadFromClients);
     process.stdout.write(messageThreadFromClients);
+
 }
 
 server.listen(5000, () => {
