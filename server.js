@@ -13,81 +13,77 @@ const server = net.createServer((client) => {
     //adding new client to client array
     clientNumber = clientArray.push(client);
     // name for client
-    client.name = client.remotePort + ": ";
+    client.name = client.remotePort;
 
     //welcoming my new guest
     client.setEncoding('utf8');
-    client.write("Hello " + `Guest${keepingTrackOfConnectedClients}` + ", you'll be " + client.name + "from " +
-        "here on out! :)\n");
+    client.write(`Hello Guest${keepingTrackOfConnectedClients} you'll be Guest${client.name} from here on out! :)\n`);
     // adding to chat log
-    fs.appendFile('./chatLog.txt', `Server: Welcome to the chat room\n`, function () {
-        // if (err) throw err;
-        console.log("Welcomed to the chatlog saved!");
+    fs.appendFile('./chatLog.txt', `Server: Welcome to the chat room\n`, function (err) {
+        if (err) throw err;
+        // console.log("Console logging the welcome to the chat log got saved!");
     });
 
 
     //broading what guest entered the chat room
-    broadcast(`Guest${keepingTrackOfConnectedClients}: ` + `entered the chat room  and will be ` + client.name +
-        "from here on out!", client);
-    // broadcast(client.name + `entered the chat room `, client);
-
+    broadcast(`Guest${keepingTrackOfConnectedClients}: entered the chat room  and will be Guest${client.name} from here on out!\n`, client);
 
 // come back to if eles about 1 user to many
     broadcast(clientNumber + ' user/s connected');
     //incoming message from client/s
-    client.on('data', data => {
-        broadcast(client.name, data, client);
-
-    });
+    // client.on('data', data => {
+    //     broadcast(client.name, client);
+    // });
     clientArray.forEach(client => {
         if(clientArray.length === 1) {
             messageThread.push(client.name + 'has joined. \n');
-            console.log('message thread ' + messageThread);
-            fs.appendFile('./chatLog.txt', + client.name + ': has joined the chat room.', function () {
-                // if (err) throw err;
-                console.log("console logging that " + client.name + "joined chat room");
+            // console.log('message thread ' + messageThread);
+            fs.appendFile('./chatLog.txt', + `Guest${client.name}: has joined the chat room.\n`, function (err) {
+                if (err) throw err;
+                // console.log("console logging that guest" + client.name + " joined chat room");
 
             });
         }
         // else if (user !== client) {
         else {
 
-            client.write(client.name + ' has joined the chatroom\n');
-            console.log(messageThread);
-            fs.appendFile('./chatLog.txt', `${client.name}: has joined the chat room`, function () {
+            client.write(`Guest${client.name} has joined the chat room.\n`);
+            fs.appendFile('./chatLog.txt', `Guest${client.name}: has joined the chat room\n`, function (err) {
+                // console.log(messageThread);
 
-                // if (err) throw err;
+                if (err) throw err;
             });
         }
     });
     client.on('data', data => {
         clientArray.forEach(user => {
             if(user !== client) {
-                user.write(`Guest${client.name}: ${data}`);
+                user.write(`Guest${client.name}: ${data}\n`);
                 messageThread.push(client.name + data);
-                console.log(messageThread);
-                fs.appendFile('./chatLog.txt', `${client.name}: adding message thread`, function () {
-                    console.log('yourface');
+                // console.log(messageThread);
+                fs.appendFile('./chatLog.txt', `Guest${client.name}: added ${messageThread} to thread\n `, function (err) {
+                    if (err) throw err;
+
+                    // console.log(`console logging that the guest${client.name}: message got added to the thread\n`);
                 });
             }
-            else {
-                fs.appendFile('./chatLog.txt', `${client.name}`, function () {
-                    // if (err) throw err;
-                    console.log('your face 2');
-                });
-            }
+            // else {
+            //     fs.appendFile('./chatLog.txt', `Guest${client.name} message got added to the chat log`, function () {
+            //         console.log(`Guest${client.name} message get added thread\n`);
+            //     });
+            // }
         });
     console.log(data);
     });
     messageThread.push(client.name)
     //removing user from chatroom
     client.on('end', () => {
-        console.log('client disconnected');
+        // console.log('client disconnected');
         clientArray.splice(clientArray.indexOf(client), 1);
-        broadcast(client.name + " left the chatroom");
-        messageThread.push(client.name + 'has left the chatroom');
-        fs.appendFile(`'./chatLog.txt' + ${client.name} + 'has left the chat room\n'`, data, function () {
-            console.log('console logging client left chat room');
+        broadcast(`Guest${client.name} left the chatroom\n`);
+        messageThread.push(`Guest${client.name} has left the chatroom\n`);
+        fs.appendFile('./chatLog.txt', `Guest${client.name} has left the chat room\n`, function () {
+            // console.log('console logging client left chat room');
         })
     });
 
@@ -102,7 +98,7 @@ function broadcast(message, sender) {
         // Don't want to send it to sender
         if (client === sender) return;
         client.write(message);
-        console.log('console log message printing:'+ message);
+        // console.log('console log message printing:'+ message);
     });
     // Log it to the server output too
     process.stdout.write(messageThreadFromClients);
