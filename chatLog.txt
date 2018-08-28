@@ -60,3 +60,55 @@ Guest50430: added Guest1: entered the chat room  and will be Guest50429 from her
 ,50430how are you
  to thread
  Guest50429 has left the chat room
+Server: Welcome to the chat room
+NaNServer: Welcome to the chat room
+NaNServer: Welcome to the chat room
+NaNServer: Welcome to the chat room
+MysteryGuest50443: has joined the chat room
+MysteryGuest50444: has joined the chat room
+MysteryGuest50444: added Guest1: entered the chat room  and will be MysteryGuest50443 from here on out!
+,1 user/s connected,50443has joined. 
+,50443,Guest2: entered the chat room  and will be MysteryGuest50444 from here on out!
+,2 user/s connected,50444,50444hiu
+ to thread
+ MysteryGuest50443: added Guest1: entered the chat room  and will be MysteryGuest50443 from here on out!
+,1 user/s connected,50443has joined. 
+,50443,Guest2: entered the chat room  and will be MysteryGuest50444 from here on out!
+,2 user/s connected,50444,50444hiu
+,50443hi
+ to thread
+ Server: Welcome to the chat room
+NaNServer: Welcome to the chat room
+MysteryGuest50445: has joined the chat room
+MysteryGuest50446: has joined the chat room
+MysteryGuest50446: added Guest1: entered the chat room  and will be MysteryGuest50445 from here on out!
+,1 user/s connected,50445has joined. 
+,50445,Guest2: entered the chat room  and will be MysteryGuest50446 from here on out!
+,2 user/s connected,50446,50446hi
+ to thread
+ MysteryGuest50445: added Guest1: entered the chat room  and will be MysteryGuest50445 from here on out!
+,1 user/s connected,50445has joined. 
+,50445,Guest2: entered the chat room  and will be MysteryGuest50446 from here on out!
+,2 user/s connected,50446,50446hi
+,50445hi
+ to thread
+ Server: Welcome to the chat room
+NaNServer: Welcome to the chat room
+MysteryGuest50447: has joined the chat room
+MysteryGuest50448: has joined the chat room
+MysteryGuest50447: added Guest1: entered the chat room  and will be MysteryGuest50447 from here on out!
+,1 user/s connected,50447has joined. 
+,50447,Guest2: entered the chat room  and will be MysteryGuest50448 from here on out!
+,2 user/s connected,50448,50447hi
+ to thread
+ MysteryGuest50448: added Guest1: entered the chat room  and will be MysteryGuest50447 from here on out!
+,1 user/s connected,50447has joined. 
+,50447,Guest2: entered the chat room  and will be MysteryGuest50448 from here on out!
+,2 user/s connected,50448,50447hi
+,50448hi
+ to thread
+ Server: Welcome to the chat room
+NaNServer: Welcome to the chat room
+MysteryGuest50449: has joined the chat room
+MysteryGuest50450: has joined the chat room
+Guest50449 has left the chat room

@@ -17,7 +17,7 @@ const server = net.createServer((client) => {
 
     //welcoming my new guest
     client.setEncoding('utf8');
-    client.write(`Hello Guest${keepingTrackOfConnectedClients} you'll be Guest${client.name} from here on out! :)\n`);
+    client.write(`Hello Guest${keepingTrackOfConnectedClients} you'll be MysteryGuest${client.name} from here on out! :)\n`);
     // adding to chat log
     fs.appendFile('./chatLog.txt', `Server: Welcome to the chat room\n`, function (err) {
         if (err) throw err;
@@ -26,7 +26,7 @@ const server = net.createServer((client) => {
 
 
     //broading what guest entered the chat room
-    broadcast(`Guest${keepingTrackOfConnectedClients}: entered the chat room  and will be Guest${client.name} from here on out!\n`, client);
+    broadcast(`Guest${keepingTrackOfConnectedClients}: entered the chat room  and will be MysteryGuest${client.name} from here on out!\n`, client);
 
 // come back to if eles about 1 user to many
     broadcast(clientNumber + ' user/s connected');
@@ -37,8 +37,7 @@ const server = net.createServer((client) => {
     clientArray.forEach(client => {
         if(clientArray.length === 1) {
             messageThread.push(client.name + 'has joined. \n');
-            // console.log('message thread ' + messageThread);
-            fs.appendFile('./chatLog.txt', + `Guest${client.name}: has joined the chat room.\n`, function (err) {
+            fs.appendFile('./chatLog.txt', + `MysteryGuest${client.name}: has joined the chat room. \n`, function (err) {
                 if (err) throw err;
                 // console.log("console logging that guest" + client.name + " joined chat room");
 
@@ -47,8 +46,8 @@ const server = net.createServer((client) => {
         // else if (user !== client) {
         else {
 
-            client.write(`Guest${client.name} has joined the chat room.\n`);
-            fs.appendFile('./chatLog.txt', `Guest${client.name}: has joined the chat room\n`, function (err) {
+            client.write(`MysteryGuest${client.name} has joined the chat room.\n`);
+            fs.appendFile('./chatLog.txt', `MysteryGuest${client.name}: has joined the chat room\n`, function (err) {
                 // console.log(messageThread);
 
                 if (err) throw err;
@@ -58,10 +57,11 @@ const server = net.createServer((client) => {
     client.on('data', data => {
         clientArray.forEach(user => {
             if(user !== client) {
-                user.write(`Guest${client.name}: ${data}\n`);
+                //what the other person see's
+                user.write(`MysteryGuest${client.name}: ${data}\n`);
                 messageThread.push(client.name + data);
                 // console.log(messageThread);
-                fs.appendFile('./chatLog.txt', `Guest${client.name}: added ${messageThread} to thread\n `, function (err) {
+                fs.appendFile('./chatLog.txt', `MysteryGuest${client.name}: added ${messageThread} to thread\n `, function (err) {
                     if (err) throw err;
 
                     // console.log(`console logging that the guest${client.name}: message got added to the thread\n`);
@@ -75,7 +75,7 @@ const server = net.createServer((client) => {
         });
     console.log(data);
     });
-    messageThread.push(client.name)
+    messageThread.push(client.name);
     //removing user from chatroom
     client.on('end', () => {
         // console.log('client disconnected');
@@ -98,7 +98,7 @@ function broadcast(message, sender) {
     clientArray.forEach(client => {
         // Don't want to send it to sender
         if (client === sender) return;
-        client.write(message);
+        client.write( message);
         // console.log('console log message printing:'+ message);
     });
     // Log it to the server output too
